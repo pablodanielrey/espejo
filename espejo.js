@@ -12,6 +12,11 @@ app.controller('EspejoCtrl',
       $scope.ctx = null;
       $scope.image = null;
 
+      $scope.accel = {};
+      $scope.accelg = {};
+      $scope.rotation = {};
+      $scope.interval = 0;
+
 
       $scope.error = function() {
         // nada no me importa. come torta.
@@ -68,6 +73,12 @@ app.controller('EspejoCtrl',
         $scope.ctx.putImageData(frame,0,0);
       }
 
+
+      $scope.boton = function() {
+        $scope.setearCamara();
+        $scope.configurarMovimiento();
+      }
+
       /*
         Configura y da inicio al stream de la camara
       */
@@ -75,6 +86,57 @@ app.controller('EspejoCtrl',
         navigator.webkitGetUserMedia({video:true, audio:false}, $scope.setearVideoUrl, $scope.error);
       }
 
+
+      $scope.convertAccelToBlend = function() {
+        var suma = 0.0;
+        suma = $scope.accel.x / 10 + $scope.accel.y / 10 + $scope.accel.z / 10;
+        suma = suma + $scope.accelg.x / 10 + $scope.accelg.y / 10 + $scope.accelg.z / 10;
+        suma = suma + $scope.rotation.alpha / 10 + $scope.rotation.beta / 10 + $scope.rotation.gamma / 10;
+        $scope.s1 = Math.min(Math.abs(suma),1.0);
+
+      }
+
+
+      $scope.deviceMotionHandler = function(eventData) {
+        $scope.$apply(function() {
+          // Grab the acceleration from the results
+          var accel = eventData.acceleration;
+          $scope.accel = accel;
+
+          var accelg = eventData.accelerationIncludingGravity;
+          $scope.accelg = accelg;
+
+          var rotation = eventData.rotationRate;
+          $scope.rotation = rotation;
+
+          $scope.interval = eventData.interval;
+
+          $scope.convertAccelToBlend();
+        });
+      }
+
+      $scope.deviceOrientationHandler = function(eventData) {
+        $scope.$apply(function() {
+          $scope.rotation = eventData;
+        });
+      }
+
+
+      $scope.configurarMovimiento = function() {
+        /*
+        if (window.DeviceOrientationEvent) {
+          window.addEventListener('deviceorientation', $scope.deviceMotionHandler, false);
+        } else {
+          alert('No se soporta el device orientation');
+        }
+        */
+
+        if (window.DeviceMotionEvent) {
+          window.addEventListener('devicemotion', $scope.deviceMotionHandler, false);
+        } else {
+          alert('no soporta device motion');
+        }
+      }
 
   }
 );

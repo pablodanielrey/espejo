@@ -13,13 +13,25 @@
 
       <!-- elementos no visibles -->
       <img src='img2.jpg'></img>
-      <button ng-click='setearCamara()'>prender camara</button>
+      <button ng-click='boton()'>prender camara</button>
       <video autoplay class='video'></video>
       <!-- -->
 
       <canvas id='canvas' class='canvas'></canvas>
       <input type="range" min="0.0" max="1.0" step='0.1' ng-model='s1'>
 
-      <!-- <img class='image'></img> -->
+      <input type='text' ng-model='accel.x'/>
+      <input type='text' ng-model='accel.y'/>
+      <input type='text' ng-model='accel.z'/>
+
+      <input type='text' ng-model='accelg.x'/>
+      <input type='text' ng-model='accelg.y'/>
+      <input type='text' ng-model='accelg.z'/>
+
+      <input type='text' ng-model='rotation.alpha'/>
+      <input type='text' ng-model='rotation.beta'/>
+      <input type='text' ng-model='rotation.gamma'/>
+
+      <input type='text' ng-model='interval'/>
     </body>
 </html>
