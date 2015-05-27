@@ -69,6 +69,7 @@ app.controller('EspejoCtrl',
         }
       }
 
+
       /*
         Dibuja el frame
       */
