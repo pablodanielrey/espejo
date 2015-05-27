@@ -2,3 +2,19 @@
   margin: 0px;
   padding: 0px;
 }
+
+.video {
+  height: 480px;
+  width: 640px;
+  display:none;
+}
+
+.canvas {
+  height: 480px;
+  width: 640px;
+}
+
+.image {
+  height: 480px;
+  width: 640px;
+}
