@@ -12,14 +12,22 @@ app.controller('EspejoCtrl',
       $scope.ctx = null;
       $scope.image = null;
 
-      $scope.accel = {};
-      $scope.accelg = {};
-      $scope.rotation = {};
+      $scope.accel = { x: 0, y: 0, z: 0 };
+
+      $scope.accelg = { x: 0, y: 0, z: 0 };
+
+      $scope.rotation = {
+        alpha:0,
+        beta:0,
+        gamma:0
+      };
+
       $scope.interval = 0;
 
 
       $scope.error = function() {
         // nada no me importa. come torta.
+        alert('No se pudo obtener la camara');
       }
 
       /*
@@ -99,7 +107,7 @@ app.controller('EspejoCtrl',
 
       $scope.deviceMotionHandler = function(eventData) {
         $scope.$apply(function() {
-          // Grab the acceleration from the results
+
           var accel = eventData.acceleration;
           $scope.accel = accel;
 
