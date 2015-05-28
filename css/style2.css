@@ -1,0 +1,22 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.video {
+  positon:absolute;
+  top:0;
+  left:0;
+  height: 480px;
+  width: 640px;
+}
+
+.imagen {
+  position:absolute;
+  top:0;
+  left:0;
+  height: 480px;
+  width: 640px;
+  opacity: 0;
+  z-index:999;
+}
