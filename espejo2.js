@@ -4,13 +4,12 @@ app.controller('EspejoCtrl',
   function($scope,$interval) {
 
       $scope.s1 = 0;
-      $scope.image1 = null;
-      $scope.width = 0;
-      $scope.height = 0;
       $scope.video = null;
-      $scope.canvas = null;
-      $scope.ctx = null;
-      $scope.image = null;
+
+      $scope.imagenes = ['mujer1.fw.png','mujer2.fw.png','mujer1.fw.png','mujer2.fw.png','mujer1.fw.png','mujer2.fw.png'];
+      $scope.imagenesl = $scope.imagenes.length;
+      $scope.indiceImagen1 = 0;
+      $scope.indiceImagen2 = 1;
 
       $scope.usarAccelx = false;
       $scope.usarAccely = false;
@@ -18,7 +17,7 @@ app.controller('EspejoCtrl',
       $scope.accel = { x: 0, y: 0, z: 0 };
 
       $scope.usarAccelgx = false;
-      $scope.usarAccelgy = false;
+      $scope.usarAccelgy = true;
       $scope.usarAccelgz = false;
       $scope.accelg = { x: 0, y: 0, z: 0 };
 
@@ -31,7 +30,7 @@ app.controller('EspejoCtrl',
         gamma:0
       };
 
-      $scope.im = 10;
+      $scope.im = 4;
 
       $scope.interval = 0;
 
@@ -48,6 +47,7 @@ app.controller('EspejoCtrl',
       $scope.boton = function() {
         $scope.setearCamara();
         $scope.configurarMovimiento();
+        $scope.setearCambioDeImagenes();
       }
 
       /*
@@ -117,14 +117,33 @@ app.controller('EspejoCtrl',
 
         if (suma > 0) {
           $scope.s1 = Math.min(Math.abs(suma),1.0);
+
         } else {
           $scope.s2 = Math.min(Math.abs(suma),1.0);
         }
       }
 
 
+      $scope.setearCambioDeImagenes = function() {
+        $interval(function() {
+          $scope.changeImagen1();
+          $scope.changeImagen2();
+        }, 1000 * 5);
+      }
 
 
+      $scope.changeImagen1 = function() {
+        $scope.indiceImagen1 = ($scope.indiceImagen1 + 1) % $scope.imagenes.length;
+        var img = document.getElementById('imagen1');
+        img.src = $scope.imagenes[$scope.indiceImagen1];
+      }
+
+
+      $scope.changeImagen2 = function() {
+        $scope.indiceImagen2 = ($scope.indiceImagen2 + 1) % $scope.imagenes.length;
+        var img = document.getElementById('imagen2');
+        img.src = $scope.imagenes[$scope.indiceImagen2];
+      }
 
 
 
