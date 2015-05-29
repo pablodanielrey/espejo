@@ -7,16 +7,16 @@
   positon:absolute;
   top:0;
   left:0;
-  height: 480px;
-  width: 640px;
+  height: 640px;
+  width: 480px;
 }
 
 .imagen {
   position:absolute;
   top:0;
   left:0;
-  height: 480px;
-  width: 640px;
+  height: 640px;
+  width: 480px;
   opacity: 0;
   z-index:999;
 }

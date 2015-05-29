@@ -11,14 +11,30 @@
     </head>
     <body ng-controller='EspejoCtrl'>
 
-      <img id='imagen' src='img2.jpg' class='imagen'></img>
+      <img id='imagen1' src='mujer1.fw.png' class='imagen'></img>
+      <img id='imagen2' src='mujer2.fw.png' class='imagen'></img>
       <!-- <img id='imagen2' src='img3.jpg' class='imagen'></img> -->
       <video autoplay class='video'></video>
+      <button ng-click='boton()'>Camara</button>
 
-      <button ng-click='boton()'>prender camara</button>
 
-      <input type="range" min="0.0" max="1.0" step='0.1' ng-model='s1' ng-change='sliderCambio()'>
-      <input type="range" min="0.0" max="1.0" step='0.1' ng-model='s2' ng-change='sliderCambio()'>
+      <input type="range" min="0.0" max="1.0" step='0.1' ng-model='s1' ng-change='sliderCambio1()'>
+      <input type="range" min="0.0" max="1.0" step='0.1' ng-model='s2' ng-change='sliderCambio2()'>
 
+      <div>
+        <input type='text' ng-model='accel.x'/>
+        <input type='text' ng-model='accel.y'/>
+        <input type='text' ng-model='accel.z'/>
+
+        <input type='text' ng-model='accelg.x'/>
+        <input type='text' ng-model='accelg.y'/>
+        <input type='text' ng-model='accelg.z'/>
+
+        <input type='text' ng-model='rotation.alpha'/>
+        <input type='text' ng-model='rotation.beta'/>
+        <input type='text' ng-model='rotation.gamma'/>
+
+        <input type='text' ng-model='interval'/>
+      </div>
     </body>
 </html>
