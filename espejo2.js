@@ -72,6 +72,13 @@ app.controller('EspejoCtrl',
 
 
 
+
+      /*
+        ESTE METODO TIENEN QUE MODIFICAR PARA LOGRAR LA CONVERSION DE VALORES A LOS
+        SLIDERS.
+        PUEDEN USAR SUMAS, RESTAS, MULTIPLICACIONES, ETC.
+      */
+
       $scope.convertAccelToBlend = function() {
         var im = $scope.im;
         var suma = 0.0;
@@ -114,6 +121,17 @@ app.controller('EspejoCtrl',
           $scope.s2 = Math.min(Math.abs(suma),1.0);
         }
       }
+
+
+
+
+
+
+
+
+
+
+
 
 
       $scope.deviceMotionHandler = function(eventData) {
