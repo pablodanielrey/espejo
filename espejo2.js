@@ -124,6 +124,8 @@ app.controller('EspejoCtrl',
       }
 
 
+
+
       $scope.setearCambioDeImagenes = function() {
         $interval(function() {
           $scope.changeImagen1();
