@@ -12,13 +12,19 @@ app.controller('EspejoCtrl',
       $scope.ctx = null;
       $scope.image = null;
 
-      $scope.usarAccel = false;
+      $scope.usarAccelx = false;
+      $scope.usarAccely = false;
+      $scope.usarAccelz = false;
       $scope.accel = { x: 0, y: 0, z: 0 };
 
-      $scope.usarAccelg = false;
+      $scope.usarAccelgx = false;
+      $scope.usarAccelgy = false;
+      $scope.usarAccelgz = false;
       $scope.accelg = { x: 0, y: 0, z: 0 };
 
-      $scope.usarRotation = false;
+      $scope.usarRotationA = false;
+      $scope.usarRotationB = false;
+      $scope.usarRotationG = false;
       $scope.rotation = {
         alpha:0,
         beta:0,
@@ -66,17 +72,38 @@ app.controller('EspejoCtrl',
 
       $scope.convertAccelToBlend = function() {
         var suma = 0.0;
-        if ($scope.usarAccel) {
-          suma = $scope.accel.x / 10 + $scope.accel.y / 10 + $scope.accel.z / 10;
+        if ($scope.usarAccelx) {
+          suma = $scope.accel.x / 10;
+        }
+        if ($scope.usarAccely) {
+          suma = $scope.accel.y / 10;
+        }
+        if ($scope.usarAccelz) {
+          suma = $scope.accel.z / 10;
         }
 
-        if ($scope.usarAccelg) {
-          suma = suma + $scope.accelg.x / 10 + $scope.accelg.y / 10 + $scope.accelg.z / 10;
+
+        if ($scope.usarAccelgx) {
+          suma = suma + $scope.accelg.x / 10;
+        }
+        if ($scope.usarAccelgy) {
+          suma = suma + $scope.accelg.y / 10;
+        }
+        if ($scope.usarAccelgz) {
+          suma = suma + $scope.accelg.z / 10;
         }
 
-        if ($scope.usarRotation) {
-          suma = suma + $scope.rotation.alpha / 10 + $scope.rotation.beta / 10 + $scope.rotation.gamma / 10;
+
+        if ($scope.usarRotationA) {
+          suma = suma + $scope.rotation.alpha / 10;
         }
+        if ($scope.usarRotationB) {
+          suma = suma + $scope.rotation.beta / 10;
+        }
+        if ($scope.usarRotationG) {
+          suma = suma + $scope.rotation.gamma / 10;
+        }
+
         $scope.s1 = Math.min(Math.abs(suma),1.0);
         $scope.s2 = Math.min(Math.abs(suma),1.0);
       }
