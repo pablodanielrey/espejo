@@ -12,10 +12,13 @@ app.controller('EspejoCtrl',
       $scope.ctx = null;
       $scope.image = null;
 
+      $scope.usarAccel = false;
       $scope.accel = { x: 0, y: 0, z: 0 };
 
+      $scope.usarAccelg = false;
       $scope.accelg = { x: 0, y: 0, z: 0 };
 
+      $scope.usarRotation = false;
       $scope.rotation = {
         alpha:0,
         beta:0,
@@ -63,9 +66,17 @@ app.controller('EspejoCtrl',
 
       $scope.convertAccelToBlend = function() {
         var suma = 0.0;
-        suma = $scope.accel.x / 10 + $scope.accel.y / 10 + $scope.accel.z / 10;
-        suma = suma + $scope.accelg.x / 10 + $scope.accelg.y / 10 + $scope.accelg.z / 10;
-        suma = suma + $scope.rotation.alpha / 10 + $scope.rotation.beta / 10 + $scope.rotation.gamma / 10;
+        if ($scope.usarAccel) {
+          suma = $scope.accel.x / 10 + $scope.accel.y / 10 + $scope.accel.z / 10;
+        }
+
+        if ($scope.usarAccelg) {
+          suma = suma + $scope.accelg.x / 10 + $scope.accelg.y / 10 + $scope.accelg.z / 10;
+        }
+
+        if ($scope.usarRotation) {
+          suma = suma + $scope.rotation.alpha / 10 + $scope.rotation.beta / 10 + $scope.rotation.gamma / 10;
+        }
         $scope.s1 = Math.min(Math.abs(suma),1.0);
         $scope.s2 = Math.min(Math.abs(suma),1.0);
       }
