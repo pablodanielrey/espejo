@@ -75,6 +75,7 @@ app.controller('EspejoCtrl',
       $scope.convertAccelToBlend = function() {
         var im = $scope.im;
         var suma = 0.0;
+
         if ($scope.usarAccelx) {
           suma = $scope.accel.x / im;
         }
@@ -107,8 +108,11 @@ app.controller('EspejoCtrl',
           suma = suma + $scope.rotation.gamma / im;
         }
 
-        $scope.s1 = Math.min(Math.abs(suma),1.0);
-        $scope.s2 = Math.min(Math.abs(suma),1.0);
+        if (suma > 0) {
+          $scope.s1 = Math.min(Math.abs(suma),1.0);
+        } else {
+          $scope.s2 = Math.min(Math.abs(suma),1.0);
+        }
       }
 
 
